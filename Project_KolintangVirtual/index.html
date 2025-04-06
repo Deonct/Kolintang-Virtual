@@ -1,0 +1,123 @@
+<html><head><base href="." />
+  <link rel="stylesheet" href="styles.css">
+</head>
+  <body>
+  <h1>Kolintang Virtual Experience</h1>
+  
+  <div class="language-toggle">
+    <button onclick="toggleLanguage()" class="lang-btn">
+      <span class="lang-text">EN</span> | <span class="lang-text">ID</span>
+    </button>
+  </div>
+
+  <div class="tab-buttons">
+    <button class="tab-button" onclick="showSection('history')">History</button>
+    <button class="tab-button" onclick="showSection('learn')">Learning Mode</button>
+    <button class="tab-button" onclick="showSection('game')">Game Mode</button>
+    <button class="tab-button" onclick="showSection('theory')">Music Theory</button>
+  </div>
+
+  <div id="historySection" class="content-section history-section">
+    <h2>History of Kolintang</h2>
+    <p>The Kolintang is a traditional musical instrument originating from Minahasa, North Sulawesi, Indonesia. This wooden percussion instrument consists of several wooden bars arranged in a row, similar to a xylophone. The name "Kolintang" comes from the sound it makes - "ting" "tang" when played.</p>
+    
+    <h3>Origins and Development</h3>
+    <p>Dating back several centuries, the Kolintang was initially created from bamboo tubes hung in sequence. Over time, it evolved to use wooden bars made from special types of wood, particularly jackfruit wood, known for its excellent resonant qualities.</p>
+    
+    <h3>Cultural Significance</h3>
+    <p>In Minahasan culture, the Kolintang plays a crucial role in various ceremonies and celebrations. It's commonly performed at weddings, cultural festivals, and traditional ceremonies. The instrument represents the rich musical heritage of the Minahasan people and has become a symbol of their cultural identity.</p>
+    
+    <h3>Modern Usage</h3>
+    <p>Today, the Kolintang has gained recognition beyond its traditional context. It's taught in schools and universities, and modern composers have incorporated it into contemporary musical arrangements. The instrument continues to evolve while maintaining its cultural significance.</p>
+  </div>
+
+  <div class="mode-select">
+    <button onclick="setMode('learn')">Learning Mode</button>
+    <button onclick="setMode('game')">Game Mode</button>
+  </div>
+
+  <div class="instructions" id="gameInstructions" style="display: none;">
+    <p>Follow the sequence! Watch the highlighted bars and repeat the pattern.</p>
+    <p>Use your keyboard keys (1-8) or click the bars to play</p>
+  </div>
+
+  <div class="lesson" id="lessonContent">
+    <h2>Basic Kolintang Lessons</h2>
+    <p>Click on the notes to hear their sound.</p>
+    <div id="currentLesson"></div>
+    <button onclick="nextLesson()">Next Lesson</button>
+  </div>
+
+  <div class="score" id="scoreDisplay" style="display: none;">Score: <span id="scoreValue">0</span></div>
+
+  <div class="sequence" id="sequence"></div>
+
+  <div class="kolintang">
+    <div class="bar" data-note="C" data-key="1"><span class="note">Do</span></div>
+    <div class="bar" data-note="D" data-key="2"><span class="note">Re</span></div>
+    <div class="bar" data-note="E" data-key="3"><span class="note">Mi</span></div>
+    <div class="bar" data-note="F" data-key="4"><span class="note">Fa</span></div>
+    <div class="bar" data-note="G" data-key="5"><span class="note">Sol</span></div>
+    <div class="bar" data-note="A" data-key="6"><span class="note">La</span></div>
+    <div class="bar" data-note="B" data-key="7"><span class="note">Ti</span></div>
+    <div class="bar" data-note="C2" data-key="8"><span class="note">Do</span></div>
+  </div>
+
+  <div class="game-controls">
+    <button id="startGame" style="display: none;">Start Game</button>
+  </div>
+
+  <div id="theorySection" class="content-section theory-section">
+    <h2>Kolintang Music Theory</h2>
+    
+    <div class="theory-tabs">
+      <button class="theory-tab active" onclick="showTheoryContent('notation')">Musical Notation</button>
+      <button class="theory-tab" onclick="showTheoryContent('chords')">Basic Chords</button>
+    </div>
+
+    <div id="notationContent" class="theory-content active">
+      <h3>Basic Musical Notation</h3>
+      <div class="notation-display">
+        <svg width="400" height="200" id="notationStaff">
+          <line x1="10" y1="40" x2="390" y2="40" stroke="white"/>
+          <line x1="10" y1="60" x2="390" y2="60" stroke="white"/>
+          <line x1="10" y1="80" x2="390" y2="80" stroke="white"/>
+          <line x1="10" y1="100" x2="390" y2="100" stroke="white"/>
+          <line x1="10" y1="120" x2="390" y2="120" stroke="white"/>
+        </svg>
+      </div>
+      <p>The Kolintang uses standard musical notation. Each bar corresponds to:</p>
+      <ul>
+        <li>Do (C) - First bar</li>
+        <li>Re (D) - Second bar</li>
+        <li>Mi (E) - Third bar</li>
+        <li>Fa (F) - Fourth bar</li>
+        <li>Sol (G) - Fifth bar</li>
+        <li>La (A) - Sixth bar</li>
+        <li>Ti (B) - Seventh bar</li>
+        <li>Do (C) - Eighth bar</li>
+      </ul>
+    </div>
+
+    <div id="chordsContent" class="theory-content">
+      <h3>Basic Chord Patterns</h3>
+      <div class="chord-patterns">
+        <div class="chord-box">
+          <h4>C Major Chord</h4>
+          <div class="chord-diagram" data-notes="C,E,G"></div>
+          <button onclick="playChord(['C','E','G'])">Play C Major</button>
+        </div>
+        <div class="chord-box">
+          <h4>G Major Chord</h4>
+          <div class="chord-diagram" data-notes="G,B,D"></div>
+          <button onclick="playChord(['G','B','D'])">Play G Major</button>
+        </div>
+        <div class="chord-box">
+          <h4>F Major Chord</h4>
+          <div class="chord-diagram" data-notes="F,A,C"></div>
+          <button onclick="playChord(['F','A','C'])">Play F Major</button>
+          <script src="script.js"></script>
+        </div>
+      </div>
+    </div>
+  </div>
